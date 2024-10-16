@@ -16,3 +16,8 @@ l: prints only the names of files with matching lines
 - grep
 - cat
 
+### Running The Script
+./main.py {script you want to input}
+
+### Testing
+python3 -m unittest discover -s tests -p "*.py"

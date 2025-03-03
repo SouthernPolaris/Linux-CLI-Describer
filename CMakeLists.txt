@@ -33,22 +33,14 @@ target_link_libraries(cli_describe
     cli_describer
 )
 
-add_executable(test_grep tests/test_grep.cpp)
-target_link_libraries(test_grep
+add_executable(unit_tests tests/test_main.cpp)
+target_link_libraries(unit_tests
     PRIVATE
     cli_describer
     GTest::gtest
     GTest::gtest_main
 )
 
-add_executable(test_curl tests/test_curl.cpp)
-target_link_libraries(test_curl
-    PRIVATE
-    cli_describer
-    GTest::gtest
-    GTest::gtest_main
-)
 
 include(GoogleTest)
-gtest_discover_tests(test_grep)
-gtest_discover_tests(test_curl)
+gtest_discover_tests(unit_tests)

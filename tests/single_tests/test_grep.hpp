@@ -32,8 +32,3 @@ TEST_F(GrepCommandTest, HandleMultipleFiles) {
     EXPECT_TRUE(result.find("file1.txt") != std::string::npos);
     EXPECT_TRUE(result.find("file2.txt") != std::string::npos);
 }
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}

@@ -1,4 +1,5 @@
 #include "commands/grep_command.hpp"
+#include "commands/curl_command.hpp"
 #include <iostream>
 #include <map>
 #include <memory>
@@ -9,6 +10,12 @@ using CommandRegistry = std::map<std::string, CommandPtr>;
 CommandPtr createCommand(const std::string &name) {
     if (name == "grep") {
         auto cmd = std::make_unique<GrepCommand>();
+        cmd->setup();
+        return cmd;
+    }
+
+    if (name == "curl") {
+        auto cmd = std::make_unique<CurlCommand>();
         cmd->setup();
         return cmd;
     }

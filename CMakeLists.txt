@@ -18,6 +18,7 @@ enable_testing()
 add_library(cli_describer
     src/command_base.cpp
     src/commands/grep_command.cpp
+    src/commands/curl_command.cpp
 )
 
 target_include_directories(cli_describer 
@@ -39,5 +40,14 @@ target_link_libraries(test_grep
     GTest::gtest_main
 )
 
+add_executable(test_curl tests/test_curl.cpp)
+target_link_libraries(test_curl
+    PRIVATE
+    cli_describer
+    GTest::gtest
+    GTest::gtest_main
+)
+
 include(GoogleTest)
 gtest_discover_tests(test_grep)
+gtest_discover_tests(test_curl)

@@ -1,28 +1,6 @@
-#include "commands/grep_command.hpp"
-#include "commands/curl_command.hpp"
+#include "command_registry.hpp"
+#include <vector>
 #include <iostream>
-#include <map>
-#include <memory>
-
-using CommandPtr = std::unique_ptr<CommandBase>;
-using CommandRegistry = std::map<std::string, CommandPtr>;
-
-CommandPtr createCommand(const std::string &name) {
-    if (name == "grep") {
-        auto cmd = std::make_unique<GrepCommand>();
-        cmd->setup();
-        return cmd;
-    }
-
-    if (name == "curl") {
-        auto cmd = std::make_unique<CurlCommand>();
-        cmd->setup();
-        return cmd;
-    }
-
-    // TODO: Insert new commands here
-    return nullptr;
-}
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
@@ -31,7 +9,7 @@ int main(int argc, char *argv[]) {
     }
 
     std::string commandName = argv[1];
-    auto command = createCommand(commandName);
+    auto command = CommandRegistry::instance().createCommand(commandName);
     
     if (!command) {
         std::cout << "Unknown command: " << commandName << std::endl;

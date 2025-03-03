@@ -17,6 +17,7 @@ enable_testing()
 
 add_library(cli_describer
     src/command_base.cpp
+    src/command_registry.cpp
     src/commands/grep_command.cpp
     src/commands/curl_command.cpp
 )

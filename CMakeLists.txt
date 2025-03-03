@@ -27,8 +27,8 @@ target_include_directories(cli_describer
     ${PROJECT_SOURCE_DIR}/include
 )
 
-add_executable(command_base src/main.cpp)
-target_link_libraries(command_base 
+add_executable(cli_describe src/main.cpp)
+target_link_libraries(cli_describe 
     PRIVATE 
     cli_describer
 )
